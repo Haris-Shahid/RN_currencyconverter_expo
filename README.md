@@ -2,6 +2,61 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
+# add eslint in your project
+Run npm install -g eslint
+Inside your project directory run eslint --init
+Select "Use a popular style guide"
+Select "Airbnb"
+Do you use React? y
+What format do you want your config file to be in? JSON
+Add to .eslintrc.json
+{
+  "extends": "airbnb", // EXISTING
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/forbid-prop-types": [
+      0
+    ],
+    "react/require-default-props": [
+      0
+    ],
+    "global-require": [
+      0
+    ]
+  }
+}
+8. Add npm scripts
+
+// package.json
+"scripts": {
+  // ...
+  "lint": "eslint app/",
+  "lint:fix": "eslint app/ --fix"
+},
+9. Update VSCode settings
+
+// .vscode/settings.json
+// Place your settings in this file to overwrite default and user settings.
+{
+  "prettier.eslintIntegration": true,
+  "editor.formatOnSave": true
+}
+
 ## Error for Laptop 
 if not loaded than follow this link to solve expo problem
 [here](https://github.com/react-community/create-react-native-app/issues/60#issuecomment-317104728)
