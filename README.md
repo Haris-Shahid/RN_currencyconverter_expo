@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
+##Error for Laptop 
+if not loaded than follow this link to solve expo problem
+[here](https://github.com/react-community/create-react-native-app/issues/60#issuecomment-317104728)
+
 ## Table of Contents
 
 * [Updating to New Releases](#updating-to-new-releases)
