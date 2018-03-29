@@ -8,6 +8,9 @@ EStyleSheet.build({
     $border: '#e2e2e2',
     $inputtxt: '#797979',
     $lightGray: '#F0F0F0',
+
+    // outline: 1, don't know why it is not working in android
 })
+// great thing in this style if you add outline 1 it gaves every component an outline
 
 export default () => <Home />;
