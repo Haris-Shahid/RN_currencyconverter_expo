@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
 import styles from './styles';
 
-const Icon = ({checkmark, visible}) => {
-    const iconStyles = [ styles.Icon ];
-    if(visible){
+const Icon = ({ checkmark, visible, iconBackground }) => {
+    const iconStyles = [styles.Icon];
+    if (visible) {
         iconStyles.push(styles.iconVisible)
     }
 
-    return(
+    if (iconBackground) {
+        iconStyles.push({ backgroundColor: iconBackground })
+    }
+
+    return (
         <View style={iconStyles} >
-        {
-            checkmark ? 
-            <Image resizeMode="contain" style={styles.CheckIcon} source={require('./images/check.png')} /> :
-            null
-        }
+            {
+                checkmark ?
+                    <Image resizeMode="contain" style={styles.CheckIcon} source={require('./images/check.png')} /> :
+                    null
+            }
         </View>
     )
 };
@@ -23,6 +27,7 @@ const Icon = ({checkmark, visible}) => {
 Icon.propTypes = {
     checkmark: PropTypes.bool,
     visible: PropTypes.bool,
+    iconBackground: PropTypes.string,
 }
 
 export default Icon;
