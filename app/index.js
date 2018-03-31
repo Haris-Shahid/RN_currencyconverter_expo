@@ -9,6 +9,7 @@ EStyleSheet.build({
     $border: '#e2e2e2',
     $inputtxt: '#797979',
     $lightGray: '#F0F0F0',
+    $darkText: '#343434',
 
     // outline: 1, don't know why it is not working in android
 })

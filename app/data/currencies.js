@@ -5,7 +5,7 @@ export default [
     'ESG',
     'ESH',
     'INR',
-    'EPJ',
+    'CAD',
     'EZI',
     'ESK',
     'ERL',
