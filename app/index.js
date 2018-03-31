@@ -1,6 +1,7 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Home from './screens/Home';
+import Options from './screens/Options';
 import CurrencyList from './screens/CurrencyList';
 
 EStyleSheet.build({
@@ -15,4 +16,4 @@ EStyleSheet.build({
 })
 // great thing in this style if you add outline 1 it gaves every component an outline
 
-export default () => <CurrencyList />;
+export default () => <Options />;
