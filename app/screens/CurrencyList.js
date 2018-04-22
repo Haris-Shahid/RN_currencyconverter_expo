@@ -8,11 +8,7 @@ const TEMP_CURRENT_CURRENCY = 'CAD';
 
 class CurrencyList extends Component {
     static propTypes = {
-        navigation: PropTypes.object,
-    }
-
-    handlePress() {
-        this.props.navigation.navigate('Home');
+        navigation: PropTypes.object
     }
 
     render() {
@@ -23,7 +19,7 @@ class CurrencyList extends Component {
                     data={currencies}
                     renderItem={({ item }) => <ListItem text={item}
                         selected={item === TEMP_CURRENT_CURRENCY}
-                        onPress={this.handlePress}
+                        onPress={() => this.props.navigation.navigate('Home')}
                     />}
                     keyExtractor={(item) => item}
                     ItemSeparatorComponent={Separator}
