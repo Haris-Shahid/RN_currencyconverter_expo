@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { FlatList, View, StatusBar } from 'react-native';
-
+import PropTypes from 'prop-types';
 import currencies from '../data/currencies';
-
 import { ListItem, Separator } from '../components/List';
 
 const TEMP_CURRENT_CURRENCY = 'CAD';
 
 class CurrencyList extends Component {
-    handlePress() {
+    static propTypes = {
+        navigation: PropTypes.object,
+    }
 
+    handlePress() {
+        this.props.navigation.goBack(null)
     }
 
     render() {
@@ -21,7 +24,7 @@ class CurrencyList extends Component {
                     renderItem={({ item }) => <ListItem text={item}
                         selected={item === TEMP_CURRENT_CURRENCY}
                         onPress={this.handlePress}
-                         />}
+                    />}
                     keyExtractor={(item) => item}
                     ItemSeparatorComponent={Separator}
                 />

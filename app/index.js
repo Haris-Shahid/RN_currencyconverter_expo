@@ -1,9 +1,10 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import Home from './screens/Home';
-import Options from './screens/Options';
-import Theme from './screens/Theme';
-import CurrencyList from './screens/CurrencyList';
+// import Home from './screens/Home';
+// import Options from './screens/Options';
+// import Theme from './screens/Theme';
+// import CurrencyList from './screens/CurrencyList';
+import Navigator from './config/route';
 
 EStyleSheet.build({
     $primaryBlue: '#4F6D7A',
@@ -20,4 +21,4 @@ EStyleSheet.build({
 })
 // great thing in this style if you add outline 1 it gaves every component an outline
 
-export default () => <Theme />;
+export default () => <Navigator />;

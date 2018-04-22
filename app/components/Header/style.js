@@ -10,9 +10,9 @@ const styles = EStyleSheet.create({
      '@media ios': {
          paddingTop: 20,
      },
-     '@media android': {
-         paddingTop: StatusBar.currentHeight, //only for android device
-     }
+    //  '@media android': {
+    //      paddingTop: StatusBar.currentHeight, //only for android device
+    //  }
  },
  button: {
     alignSelf: 'flex-end',
