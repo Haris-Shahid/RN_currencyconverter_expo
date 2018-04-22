@@ -40,6 +40,7 @@ class Home extends React.Component {
 
     handleOptionPress = () => {
         console.log('optionPress');
+        this.props.navigation.navigate('Options')
     }
 
     render() {
