@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform } from 'react-native';
+import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
 import { ListItem, Separator } from '../components/List';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
@@ -12,13 +12,13 @@ class Options extends Component {
     static propTypes = {
         navigation: PropTypes.object,
     }
-    
+
     handleThemePress = () => {
         this.props.navigation.navigate('Themes');
     }
 
     handleSitePress = () => {
-
+        Linking.openURL('http://fixer.io').catch(() => alert('An error occured.'))
     }
 
     render() {
