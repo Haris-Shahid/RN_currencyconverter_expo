@@ -6,7 +6,8 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 // import CurrencyList from './screens/CurrencyList';
 import Navigator from './config/route';
 import { AlertProvider } from './components/Alert';
-import './reducers';
+import { Provider } from 'react-redux';
+import store from './config/store';
 
 EStyleSheet.build({
     $primaryBlue: '#4F6D7A',
@@ -23,4 +24,10 @@ EStyleSheet.build({
 })
 // great thing in this style if you add outline 1 it gaves every component an outline
 
-export default () => <AlertProvider><Navigator /></AlertProvider>;
+export default () => (
+    <Provider store={store} >
+        <AlertProvider>
+            <Navigator />
+        </AlertProvider>
+    </Provider>
+)

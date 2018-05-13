@@ -8,6 +8,7 @@ import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
 import PropTypes from 'prop-types';
 import { swapCurrency, changeCurrencyAmount } from '../actions/currencies';
+import { connect } from 'react-redux';
 
 const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
@@ -19,6 +20,7 @@ const TEMP_CONVERSION_DATE = new Date();
 class Home extends React.Component {
     static propTypes = {
         navigation: PropTypes.object,
+        dispatch: PropTypes.func,
     }
 
     handlePressBaseCurrency = () => {
@@ -33,12 +35,13 @@ class Home extends React.Component {
 
     handleTextChange = (text) => {
         //this.props.dispatch
-        console.log('change text', changeCurrencyAmount(text));
+        this.props.dispatch(changeCurrencyAmount(text))
+        // console.log('change text', changeCurrencyAmount(text));
     }
 
     handleSwapCurrency = () => {
-        console.log('swap currency', swapCurrency());
-
+        // console.log('swap currency', swapCurrency());
+        this.props.dispatch(swapCurrency());
     }
 
     handleOptionPress = () => {
@@ -79,4 +82,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default connect()(Home);
