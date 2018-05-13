@@ -6,6 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 // import CurrencyList from './screens/CurrencyList';
 import Navigator from './config/route';
 import { AlertProvider } from './components/Alert';
+import './reducers';
 
 EStyleSheet.build({
     $primaryBlue: '#4F6D7A',

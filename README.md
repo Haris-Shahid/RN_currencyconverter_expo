@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
+## possible error in expo console in genymotion
+put Ethernet adapter VirtualBox Host-Only Network #3: ip 
+
 # add eslint in your project
 Run npm install -g eslint
 Inside your project directory run eslint --init
