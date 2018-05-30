@@ -60,6 +60,41 @@ Add to .eslintrc.json
   "editor.formatOnSave": true
 }
 
+## Publish app in expo
+first globally install npm package name npm install -g exp 
+after that type exp --help to see the host commands
+after that creating an expo account
+Registration for Expo couldn't be more simple. All we need to do is run
+exp register
+Then walk through the process of signing up!
+or login
+##Upload to Expo
+Now for the fun part - publishing to Expo! This will make the app freely available to users of the Expo app, will update OTA (over the air), and you don't have to run through any of the hoops associated with deploying to the actual app store (we'll save that for a future module).
+##Preparing for Deployment
+First we want to prepare the app for deployment - this is done via the app.json file which exists in the root of the project. We can use this file in place of exp.json which a typically Expo app uses - remember that we're using Create React Native App (CRNA) so it's not a "typical" Expo app (though it does have the full functionality of one).
+
+The app.json should already exists and already have a bit of info in it - namely the Expo SDK version
+{
+  "expo": {
+    "sdkVersion": "16.0.0"
+  }
+}
+We'll add a few things to it, you can add much more to it if you wish. The full configuration options are available on the Expo site. You may notice that some of the things mentioned on that document as being required are ommitted from our file - that's because we're using CRNA and it will infer certain pieces of information.
+
+First, I want to specify that the app should lock to portrait mode. We didn't set up any designs for landscape mode so we shouldn't let it change. Second, and you may not want to do this, is set the privacy to public so that others can find it. By default this will be unlisted - meaning it can still be shared but not found by searching.
+
+These changes leave us with an app.json like this
+{
+  "expo": {
+    "sdkVersion": "16.0.0",
+    "orientation": "portrait",
+    "privacy": "public"
+  }
+}
+##Publishing
+To publish your app all you have to type is exp publish from within the project. This will take care of everything - setting up the instance, building, and uploading. You may see some warnings about not using Expo's React Native fork - no worries on that front, that's fine and to be expected.
+Now send that link to friends and family and let them know what kind of mobile super powers you have!
+
 ## Error for Laptop 
 if not loaded than follow this link to solve expo problem
 [here](https://github.com/react-community/create-react-native-app/issues/60#issuecomment-317104728)
