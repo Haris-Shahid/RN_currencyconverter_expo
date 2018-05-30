@@ -1,15 +1,16 @@
-import { SWAP_CURRENCY, CHANGE_BASE_CURRENCY, GET_INITIAL_CONVERSION, CONVERSION_ERROR, CONVERSION_RESULT } from '../actions/currencies'
-import { takeEvery, select, call, put } from 'redux-saga/effects';
-import { CANCEL } from 'redux-saga';
+import { takeEvery, call, put, select } from 'redux-saga/effects';
 
-const getLatestRate = currency => fetch(`http://api.fixer.io/latest?base${currency}sdfnvl`);
+import {
+    CHANGE_BASE_CURRENCY,
+    GET_INITIAL_CONVERSION,
+    SWAP_CURRENCY,
+    CONVERSION_RESULT,
+    CONVERSION_ERROR,
+} from '../actions/currencies';
 
-function* fetchLatestConversionRates(action) {
-    // console.log('update the things', action)
-    // getLatestRate('USD')
-    //     .then((res) => res.json())
-    //     .then((res) => console.log(res, 'reduxsaga'))
-    //     .catch((err) => console.log(err))
+export const getLatestRate = currency => fetch(`http://api.fixer.io/latest?base=${currency}`);
+
+const fetchLatestConversionRates = function* (action) {
     try {
         let currency = action.currency;
         if (currency === undefined) {
@@ -18,20 +19,19 @@ function* fetchLatestConversionRates(action) {
         const response = yield call(getLatestRate, currency);
         const result = yield response.json();
         if (result.error) {
-            yield put({ type: CONVERSION_ERROR, error: result.error })
+            yield put({ type: CONVERSION_ERROR, error: result.error });
         } else {
-            yield put({ type: CONVERSION_RESULT, result })
+            yield put({ type: CONVERSION_RESULT, result });
         }
+    } catch (error) {
+        yield put({ type: CONVERSION_ERROR, error: error.message });
     }
-    catch (e) {
-        yield put({ type: CONVERSION_ERROR, error: e.message })
-        // console.log('sagaError', e);
-    }
-    // yield;
-}
+};
 
-export default function* rootSaga() {
+const rootSaga = function* () {
     yield takeEvery(GET_INITIAL_CONVERSION, fetchLatestConversionRates);
     yield takeEvery(CHANGE_BASE_CURRENCY, fetchLatestConversionRates);
     yield takeEvery(SWAP_CURRENCY, fetchLatestConversionRates);
-}
+};
+
+export default rootSaga;
