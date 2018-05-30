@@ -9,6 +9,7 @@ import { Header } from '../components/Header';
 import PropTypes from 'prop-types';
 import { swapCurrency, changeCurrencyAmount, getInitialConversion } from '../actions/currencies';
 import { connect } from 'react-redux';
+import { connectAlert } from '../components/Alert';
 
 class Home extends React.Component {
     static propTypes = {
@@ -21,6 +22,14 @@ class Home extends React.Component {
         isFetching: PropTypes.bool,
         lastConvertedDate: PropTypes.object,
         primaryColor: PropTypes.string,
+        alertWithType: PropTypes.func,
+        currencyError: PropTypes.string,
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currencyError && nextProps.currencyError !== this.props.currencyError) {
+            this.props.alertWithType('error', 'Error', nextProps.currencyError);
+        }
     }
 
     componentWillMount() {
@@ -107,7 +116,8 @@ const mapStateToProps = (state) => {
         isFetching: conversionSelector.isFetching,
         lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
         primaryColor: state.theme.primaryColor,
+        currencyError: state.currencies.error,
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(connectAlert(Home));
