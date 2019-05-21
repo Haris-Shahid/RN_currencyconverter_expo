@@ -2,14 +2,27 @@
   "expo": {
     "name": "Currency Converter",
     "icon": "./app/components/Logo/images/log.png",
-    "sdkVersion": "25.0.0",
-    "orientation": "portrait",
+    "slug": "currencyconverter",
     "privacy": "public",
-    "ios": {
-      "bundleIdentifier": "com.yourcompany.app"
-    },
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "android": {
       "package": "com.yourcompany.app"
+    },
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.app",
+      "supportsTablet": true
     }
   }
 }
