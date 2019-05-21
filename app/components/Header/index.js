@@ -1,4 +1,4 @@
 import Header from './Header';
-import styles from './style';
+import styles from './styles';
 
 export { Header, styles };

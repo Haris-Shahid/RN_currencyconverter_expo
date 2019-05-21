@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
-import styles from './style';
-import PropTypes from  'prop-types';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { View, Image, TouchableOpacity } from 'react-native';
 
-const Header = ({onPress}) => (
-    <View style={styles.container} >
-        <TouchableOpacity style={styles.button} onPress={onPress} >
-            <Image resizeMode='contain' style={styles.icon} source={require('./images/gr.png')} />
-        </TouchableOpacity>
-    </View>
+import styles from './styles';
+
+const Header = ({ onPress }) => (
+  <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.button}>
+      <Image resizeMode="contain" source={require('./images/gear.png')} style={styles.icon} />
+    </TouchableOpacity>
+  </View>
 );
 
 Header.propTypes = {
-    onPress: PropTypes.func,
+  onPress: PropTypes.func,
 };
 
 export default Header;

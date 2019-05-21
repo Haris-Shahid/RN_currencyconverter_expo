@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Currency Converter",
-    "icon": "./app/components/Logo/images/log.png",
+    "icon": "./app/components/Logo/images/logo1.png",
     "slug": "currencyconverter",
     "privacy": "public",
     "sdkVersion": "32.0.0",

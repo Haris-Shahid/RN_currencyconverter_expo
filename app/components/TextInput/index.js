@@ -1,4 +1,4 @@
 import InputWithButton from './InputWithButton';
-import styles from './style';
+import styles from './styles';
 
 export { InputWithButton, styles };

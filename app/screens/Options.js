@@ -1,52 +1,61 @@
-import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
-import { ListItem, Separator } from '../components/List';
-import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { connectAlert } from '../components/Alert'
+import React, { Component } from 'react';
+import {
+  ScrollView, StatusBar, Platform, Linking, View, Text, TouchableOpacity
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { ListItem, Separator } from '../components/List';
+import { connectAlert } from '../components/Alert';
 
-const ICON_COLOR = '#868686',
-    ICON_SIZE = 23,
-    ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
+const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
+const ICON_COLOR = '#868686';
+const ICON_SIZE = 23;
 
 class Options extends Component {
-    static propTypes = {
-        navigation: PropTypes.object,
-        alertWithType: PropTypes.func
-    }
+  static propTypes = {
+    navigation: PropTypes.object,
+    alertWithType: PropTypes.func,
+  };
 
-    handleThemePress = () => {
-        this.props.navigation.navigate('Themes');
-    }
+  handlePressThemes = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Themes');
+  };
 
-    handleSitePress = () => {
-        Linking.openURL('http://fixer.io').catch(() => this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."))
-    }
+  handlePressSite = () => {
+    const { alertWithType } = this.props;
+    // Linking.openURL('http://handlebarlabs.com').catch(() => alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."));
+  };
 
-    render() {
-        return (
-            <ScrollView>
-                <StatusBar barStyle="default" translucent={false} />
-                <ListItem
-                    text="Themes"
-                    onPress={this.handleThemePress}
-                    customIcon={
-                        <Ionicons name={`${ICON_PREFIX}-arrow-forward`} color={ICON_COLOR} size={ICON_SIZE} />
-                    }
-                />
-                <Separator />
-                <ListItem
-                    text="Fixer.io"
-                    onPress={this.handleSitePress}
-                    customIcon={
-                        <Ionicons name={`${ICON_PREFIX}-link`} color={ICON_COLOR} size={ICON_SIZE} />
-                    }
-                />
-                <Separator />
-            </ScrollView>
-        );
-    }
+  render() {
+    return (
+      <ScrollView>
+        <StatusBar hidden={true} />
+        <View style={{ height: 60, width: '100%', borderBottomColor: '#ddd', borderBottomWidth: 0.5, shadowColor: '#ddd', shadowOpacity: 0.7, elevation: 2, shadowRadius: 5, flexDirection: 'row' }} >
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ flex: 1, justifyContent: "center", alignItems: 'center' }} >
+            <Ionicons name={`${ICON_PREFIX}-arrow-back`} size={ICON_SIZE} color='#000' />
+          </TouchableOpacity>
+          <View style={{ flex: 4, justifyContent: 'center', alignItems: 'center' }} >
+            <Text style={{ fontWeight: 'bold', fontSize: 20 }} >Options</Text>
+          </View>
+          <View style={{ flex: 1 }} />
+        </View>
+        <ListItem
+          text="Themes"
+          onPress={this.handlePressThemes}
+          customIcon={
+            <Ionicons name={`${ICON_PREFIX}-arrow-forward`} size={ICON_SIZE} color={ICON_COLOR} />
+          }
+        />
+        <Separator />
+        {/* <ListItem
+          text="Handlebar Labs"
+          onPress={this.handlePressSite}
+          customIcon={<Ionicons name={`${ICON_PREFIX}-link`} size={ICON_SIZE} color={ICON_COLOR} />}
+        />
+        <Separator /> */}
+      </ScrollView>
+    );
+  }
 }
-
-
 export default connectAlert(Options);
